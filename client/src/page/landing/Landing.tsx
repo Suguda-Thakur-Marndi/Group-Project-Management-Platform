@@ -734,42 +734,9 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* 11. CTA Banner Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-12 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="p-12 sm:p-16 rounded-3xl bg-gradient-to-r from-blue-900/40 via-indigo-900/40 to-purple-900/40 border-2 border-indigo-500/40 shadow-[0_0_100px_-15px_rgba(99,102,241,0.5)] backdrop-blur-2xl text-center relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent pointer-events-none" />
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-6 relative z-10">
-              Start Managing Projects Like a Pro
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-10 font-normal relative z-10">
-              Join thousands of innovative engineering teams delivering exceptional software ahead of schedule.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 relative z-10">
-              <Link
-                to="/sign-up"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-base font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:via-indigo-500 hover:to-cyan-400 px-9 py-4 rounded-xl shadow-[0_0_35px_-5px_rgba(59,130,246,0.6)] hover:shadow-[0_0_45px_-2px_rgba(59,130,246,0.8)] transition-all duration-300 hover:-translate-y-1"
-              >
-                <span>Start Free</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <a
-                href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center text-base font-semibold text-slate-200 bg-slate-900 hover:bg-slate-800 border border-slate-700 px-9 py-4 rounded-xl transition-all duration-300 hover:-translate-y-1 shadow-xl"
-              >
-                Contact Sales
-              </a>
-            </div>
-          </motion.div>
-        </section>
       </main>
 
-      {/* 12. Footer */}
+      {/* 11. Footer */}
       <footer id="contact" className="border-t border-slate-800 bg-slate-950 pt-20 pb-12 px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2 flex flex-col gap-6">
@@ -800,7 +767,6 @@ export default function Landing() {
             <a href="#features" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Features</a>
             <a href="#preview" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Dashboard Preview</a>
             <a href="#pricing" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Pricing Tiers</a>
-            <a href="#about" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Why Choose Us</a>
           </div>
 
           <div className="flex flex-col gap-4">
