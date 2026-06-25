@@ -11,11 +11,15 @@ const AppLayout = () => {
     <AuthProvider>
       <SidebarProvider>
         <Asidebar />
-        <SidebarInset className="overflow-x-hidden">
-          <div className="w-full">
+        <SidebarInset className="overflow-x-hidden relative bg-slate-50 dark:bg-slate-950">
+          {/* Animated Ambient Background Shapes */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-200/30 dark:bg-indigo-800/20 rounded-full blur-3xl pointer-events-none animate-ambient-glow" />
+          <div className="absolute top-1/3 right-10 w-80 h-80 bg-purple-200/30 dark:bg-purple-800/20 rounded-full blur-3xl pointer-events-none animate-ambient-glow-reverse" />
+          
+          <div className="w-full relative z-10">
             <>
               <Header />
-              <div className="px-3 lg:px-20 py-3">
+              <div className="px-4 lg:px-12 py-6 max-w-7xl mx-auto">
                 <Outlet />
               </div>
             </>
