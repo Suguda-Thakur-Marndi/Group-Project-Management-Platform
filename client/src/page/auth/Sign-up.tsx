@@ -57,7 +57,7 @@ const SignUp = () => {
     if (isPending) return;
     mutate(values, {
       onSuccess: () => {
-        navigate("/");
+        navigate("/sign-in");
       },
       onError: (error) => {
         console.log(error);
@@ -182,7 +182,7 @@ const SignUp = () => {
                     </div>
                     <div className="text-center text-sm text-slate-600 dark:text-slate-400 font-medium">
                       Already have an account?{" "}
-                      <Link to="/" className="font-semibold text-indigo-600 dark:text-indigo-400 underline underline-offset-4 hover:text-indigo-500">
+                      <Link to="/sign-in" className="font-semibold text-indigo-600 dark:text-indigo-400 underline underline-offset-4 hover:text-indigo-500">
                         Sign in
                       </Link>
                     </div>
