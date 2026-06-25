@@ -168,7 +168,7 @@ export const verifyUserService = async ({
   password: string;
   provider?: string;
 }) => {
-  const account = await AccountModel.findOne({ provider, providerId: email });
+  const account = await AccountModel.findOne({ provider: provider as any, providerId: email });
   if (!account) {
     throw new NotFoundException("Invalid email or password");
   }

@@ -69,7 +69,7 @@ export default function EditTaskForm({ task, onClose }: { task: TaskType; onClos
     status: z.enum(Object.values(TaskStatusEnum) as [keyof typeof TaskStatusEnum]),
     priority: z.enum(Object.values(TaskPriorityEnum) as [keyof typeof TaskPriorityEnum]),
     assignedTo: z.string().trim().min(1, { message: "AssignedTo is required" }),
-    dueDate: z.date({ required_error: "A due date is required." }),
+    dueDate: z.date({ message: "A due date is required." }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({

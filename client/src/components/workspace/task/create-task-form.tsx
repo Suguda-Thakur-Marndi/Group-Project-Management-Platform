@@ -109,20 +109,20 @@ export default function CreateTaskForm(props: {
     status: z.enum(
       Object.values(TaskStatusEnum) as [keyof typeof TaskStatusEnum],
       {
-        required_error: "Status is required",
+        message: "Status is required",
       }
     ),
     priority: z.enum(
       Object.values(TaskPriorityEnum) as [keyof typeof TaskPriorityEnum],
       {
-        required_error: "Priority is required",
+        message: "Priority is required",
       }
     ),
     assignedTo: z.string().trim().min(1, {
       message: "AssignedTo is required",
     }),
     dueDate: z.date({
-      required_error: "A date of birth is required.",
+      message: "A due date is required.",
     }),
   });
 
@@ -368,9 +368,8 @@ export default function CreateTaskForm(props: {
                                 new Date(new Date().setHours(0, 0, 0, 0)) || // Disable past dates
                               date > new Date("2100-12-31") //Prevent selection beyond a far future date
                           }
-                          initialFocus
                           defaultMonth={new Date()}
-                          fromMonth={new Date()}
+                          startMonth={new Date()}
                         />
                       </PopoverContent>
                     </Popover>

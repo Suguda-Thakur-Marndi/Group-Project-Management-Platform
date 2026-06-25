@@ -19,7 +19,7 @@ export const dueDateSchema = z
   .trim()
   .optional()
   .refine(
-    (val) => {
+    (val: string | undefined) => {
       return !val || !isNaN(Date.parse(val));
     },
     {
