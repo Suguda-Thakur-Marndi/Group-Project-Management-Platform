@@ -4,7 +4,7 @@ type AyncControllerType = (
   req: Request,
   res: Response,
   next: NextFunction
-) => Promise<any>;
+) => Promise<any>;;
 
 export const asyncHandler =
   (controller: AyncControllerType): AyncControllerType =>
