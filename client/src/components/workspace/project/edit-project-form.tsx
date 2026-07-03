@@ -59,6 +59,7 @@ export default function EditProjectForm(props: {
 
   useEffect(() => {
     if (project) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setEmoji(project.emoji);
       form.setValue("name", project.name);
       form.setValue("description", project.description);

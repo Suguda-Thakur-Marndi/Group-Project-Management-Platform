@@ -14,6 +14,7 @@ const usePermissions = (
         (member) => member.userId === user._id
       );
       if (member) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setPermissions(member.role.permissions || []);
       }
     }

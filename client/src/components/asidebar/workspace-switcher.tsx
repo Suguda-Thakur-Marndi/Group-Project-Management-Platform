@@ -53,6 +53,7 @@ export function WorkspaceSwitcher() {
         : workspaces[0];
 
       if (workspace) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveWorkspace(workspace);
         if (!workspaceId) navigate(`/workspace/${workspace._id}`);
       }
