@@ -1,163 +1,157 @@
-# Workspace & Project Management Platform
+# Group Project Management Platform
 
-A comprehensive, full-stack collaborative platform designed for managing workspaces, projects, tasks, and team members. Built with a robust **Node.js/Express/TypeScript** backend and a modern **React 19/Vite/Tailwind CSS** frontend.
-
----
-
-## 🌟 Key Features
-
-### 🔐 Authentication & Authorization
-- **Multi-Strategy Auth**: Supports both traditional Local Authentication (Email/Password with bcrypt hashing) and Google OAuth 2.0 via Passport.js.
-- **Session Management**: Secure session handling using HTTP-only cookies (`cookie-session`).
-- **Role-Based Access Control (RBAC)**: Fine-grained permissions for workspace owners, admins, and members.
-
-### 🏢 Workspace Management
-- **Workspaces**: Create isolated workspaces for different organizations, teams, or departments.
-- **Member Invitations**: Invite team members to workspaces with specific roles and permission levels.
-
-### 📁 Project & Task Tracking
-- **Projects**: Organize initiatives within workspaces.
-- **Tasks**: Create, assign, and track tasks within projects.
-- **Status & Workflow**: Real-time tracking of task progress and member assignments.
+A full-stack workspace and project management application for teams to collaborate on workspaces, projects, members, and tasks. The project uses a Node.js/Express/TypeScript backend and a React 19/Vite/Tailwind CSS frontend.
 
 ---
 
-## 🛠️ Technology Stack
+## ✨ What the app does
 
-### Backend (`/backend`)
-- **Runtime & Framework**: Node.js, Express 5.x, TypeScript
-- **Database & ODM**: MongoDB, Mongoose 9.x
-- **Authentication**: Passport.js (Local & Google OAuth 2.0), JSON Web Tokens (JWT)
-- **Security & Middleware**: CORS, Cookie-Session, Dotenv, Bcryptjs
-
-### Frontend (`/client`)
-- **Framework**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS 4.x
-- **Linting & Code Quality**: ESLint 9, TypeScript ESLint
+- Create and manage workspaces for different teams or organizations
+- Invite members and assign roles/permissions
+- Create projects inside each workspace
+- Create, assign, and update tasks with status tracking
+- Support local authentication and Google OAuth sign-in
+- Use session-based authentication with cookie-based security
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tech stack
 
-```
-group-projects/
-│
-├── backend/                  # Express & TypeScript API Server
+### Backend
+- Node.js
+- Express 5
+- TypeScript
+- MongoDB + Mongoose 9
+- Passport.js for local and Google OAuth authentication
+- Cookie-session, CORS, JWT-compatible session handling, Zod validation
+
+### Frontend
+- React 19
+- Vite
+- TypeScript
+- Tailwind CSS 4
+- React Query, React Hook Form, TanStack Table, Radix UI primitives
+
+---
+
+## 📁 Project structure
+
+```text
+group-project-management-platform/
+├── backend/
 │   ├── src/
-│   │   ├── config/           # App, Database, HTTP, and Passport configurations
-│   │   ├── controllers/      # Route controllers (Auth, Workspace, Project, Task, etc.)
-│   │   ├── enums/            # Error codes and system enums
-│   │   ├── middlewares/      # Authentication, error handling, and async handlers
-│   │   ├── models/           # Mongoose schemas (User, Workspace, Project, Task, Member, etc.)
-│   │   ├── routes/           # Express route definitions
-│   │   ├── services/         # Business logic layer
-│   │   ├── utils/            # Custom error classes and helper utilities
-│   │   └── validation/       # Request validation schemas
-│   ├── .env                  # Backend environment variables
-│   └── package.json          # Backend dependencies and scripts
-│
-└── client/                   # React 19 & Vite Frontend Client
-    ├── src/
-    │   ├── assets/           # Static assets and images
-    │   ├── components/       # Reusable UI components
-    │   ├── context/          # React context providers (Auth, Theme, etc.)
-    │   ├── hooks/            # Custom React hooks
-    │   ├── layout/           # Page layouts (Sidebar, Navbar, Dashboard, etc.)
-    │   ├── lib/              # Utility libraries and API client configurations
-    │   ├── page/             # Main application pages (Auth, Workspace, Invite, Errors)
-    │   ├── routes/           # Application routing configuration
-    │   └── types/            # TypeScript type definitions
-    ├── .env.example          # Example frontend environment variables
-    └── package.json          # Frontend dependencies and scripts
+│   │   ├── config/          # App, database, HTTP, and passport configuration
+│   │   ├── controllers/     # Auth, workspace, member, project, task, and user controllers
+│   │   ├── enums/           # Role, error, and task-related enums
+│   │   ├── middlewares/      # Auth, async, and error handling middleware
+│   │   ├── models/          # Mongoose models
+│   │   ├── routes/          # API routes
+│   │   ├── services/        # Business logic
+│   │   ├── utils/           # Helper utilities and custom errors
+│   │   └── validation/      # Request validation schemas
+│   └── package.json
+├── client/
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── context/         # Auth and query context providers
+│   │   ├── hooks/           # Custom hooks
+│   │   ├── layout/          # Main layouts
+│   │   ├── lib/             # API and helper utilities
+│   │   ├── page/            # App pages
+│   │   ├── routes/          # Routing setup
+│   │   └── types/           # TypeScript types
+│   └── package.json
+└── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting started
 
-### 1. Prerequisites
-Ensure you have the following installed:
-- **Node.js** (v20+ recommended)
-- **MongoDB** (Local instance or MongoDB Atlas connection string)
-- **Git**
+### Prerequisites
+- Node.js 20+ recommended
+- MongoDB running locally or via MongoDB Atlas
+- npm
 
----
-
-### 2. Installation
-
-Clone the repository and install dependencies for both the backend and frontend.
+### 1. Install dependencies
 
 ```powershell
-# Install Backend Dependencies
 cd backend
 npm install
 
-# Install Frontend Dependencies
 cd ../client
 npm install
 ```
 
----
+### 2. Configure environment variables
 
-### 3. Environment Configuration
-
-#### Backend Configuration (`backend/.env`)
-Ensure your `backend/.env` file is properly configured with the following parameters:
+#### Backend: backend/.env
 ```env
 PORT=5000
 NODE_ENV=development
-MONGO_URI=mongodb://localhost:27017/your-database-name
-SESSION_SECRET=your_super_secret_session_key
+BASE_PATH=/api
+MONGO_URI=mongodb://127.0.0.1:27017/group-management-platform
+SESSION_SECRET=change-me
 FRONTEND_ORIGIN=http://localhost:5173
 
-# Google OAuth (Optional)
+# Optional Google OAuth settings
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
 ```
 
-#### Frontend Configuration (`client/.env`)
-Copy `client/.env.example` to `client/.env` and verify your API base URL:
+#### Frontend: client/.env
 ```env
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
----
+> If you change the backend port, update the frontend API URL to match it.
 
-### 4. Running the Application Locally
+### 3. Run the app locally
 
-You will need two separate terminal windows/tabs to run the client and server concurrently.
+Open two terminals.
 
-#### Start the Backend Server
-Open a terminal from the project root:
+#### Backend
 ```powershell
 cd backend
 npm run dev
 ```
-*The server will start on `http://localhost:5000`.*
 
-#### Start the Frontend Client
-Open a second terminal from the project root:
+#### Frontend
 ```powershell
 cd client
 npm run dev
 ```
-*The client will start on `http://localhost:5173`.*
+
+The backend will run on http://localhost:5000 and the frontend on http://localhost:5173 by default.
 
 ---
 
-## 📡 API Endpoints Overview
+## 🧪 Available scripts
 
-The backend exposes a structured RESTful API under the configured base path (e.g., `/api`):
+### Backend
+- `npm run dev` — start the backend in development mode
+- `npm run build` — compile TypeScript to JavaScript
 
-| Endpoint Prefix | Authentication Required | Description |
+### Frontend
+- `npm run dev` — start the Vite development server
+- `npm run build` — build the production bundle
+- `npm run lint` — run ESLint
+
+---
+
+## 📡 API overview
+
+The backend exposes REST endpoints under the configured API base path, typically `/api`.
+
+| Endpoint Prefix | Auth Required | Description |
 | :--- | :---: | :--- |
-| `/api/auth` | No | User registration, login, logout, and Google OAuth flows. |
-| `/api/user` | Yes | Get current authenticated user profile and account details. |
-| `/api/workspace` | Yes | Create, update, delete, and list user workspaces. |
-| `/api/member` | Yes | Manage workspace members, invitations, and role assignments. |
-| `/api/project` | Yes | Create and manage projects within a specific workspace. |
-| `/api/task` | Yes | Create, assign, update status, and track project tasks. |
+| `/api/auth` | No | Register, login, logout, and Google OAuth flows |
+| `/api/user` | Yes | Get the current authenticated user profile |
+| `/api/workspace` | Yes | Create and manage workspaces |
+| `/api/member` | Yes | Manage workspace members and roles |
+| `/api/project` | Yes | Create and manage projects inside workspaces |
+| `/api/task` | Yes | Create, assign, and update tasks |
 
 ---
 
