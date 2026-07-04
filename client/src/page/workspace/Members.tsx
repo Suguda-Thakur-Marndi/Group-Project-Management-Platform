@@ -2,31 +2,61 @@ import { Separator } from "@/components/ui/separator";
 import InviteMember from "@/components/workspace/member/invite-member";
 import AllMembers from "@/components/workspace/member/all-members";
 import WorkspaceHeader from "@/components/workspace/common/workspace-header";
+import { Users } from "lucide-react";
 
 export default function Members() {
   return (
-    <div className="w-full h-auto pt-2 space-y-6">
+    <div className="flex flex-col gap-6 pb-8 animate-fade-in">
+      {/* Page Header */}
+      <div className="flex items-center gap-3">
+        <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/25 shrink-0">
+          <Users className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Team Members
+          </h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 font-normal mt-0.5">
+            Manage workspace access and member roles.
+          </p>
+        </div>
+      </div>
+
+      {/* Workspace Identity */}
       <WorkspaceHeader />
-      <Separator className="my-4 bg-slate-200 dark:bg-slate-800" />
-      <main>
-        <div className="w-full max-w-4xl mx-auto pt-3 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-xl">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
-              Workspace members
-            </h2>
-            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Workspace members can view and join all Workspace project, tasks
-              and create new task in the Workspace.
-            </p>
-          </div>
-          <Separator className="my-6 bg-slate-200 dark:bg-slate-800" />
 
+      {/* Members Section */}
+      <div className="section-card space-y-6">
+        {/* Section Title */}
+        <div>
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+            Workspace members
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Members can view and join all workspace projects, tasks, and create new tasks.
+          </p>
+        </div>
+
+        <Separator className="bg-slate-200 dark:bg-slate-800" />
+
+        {/* Invite */}
+        <div>
+          <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
+            Invite new member
+          </h3>
           <InviteMember />
-          <Separator className="my-6 bg-slate-200 dark:bg-slate-800 !h-[0.5px]" />
+        </div>
 
+        <Separator className="bg-slate-200 dark:bg-slate-800" />
+
+        {/* All members list */}
+        <div>
+          <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">
+            Current members
+          </h3>
           <AllMembers />
         </div>
-      </main>
+      </div>
     </div>
   );
 }

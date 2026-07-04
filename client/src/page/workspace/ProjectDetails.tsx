@@ -5,15 +5,18 @@ import TaskTable from "@/components/workspace/task/task-table";
 
 const ProjectDetails = () => {
   return (
-    <div className="w-full space-y-8 py-4 md:pt-3">
+    <div className="flex flex-col gap-6 pb-8 animate-fade-in">
+      {/* Project header (name, emoji, actions) */}
       <ProjectHeader />
-      <div className="space-y-8">
-        <ProjectAnalytics />
-        <Separator className="bg-slate-200 dark:bg-slate-800" />
-        {/* {Task Table} */}
-        <div className="border border-slate-200 dark:border-slate-800 rounded-2xl p-6 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-xl">
-          <TaskTable />
-        </div>
+
+      {/* Analytics cards */}
+      <ProjectAnalytics />
+
+      <Separator className="bg-slate-200 dark:bg-slate-800" />
+
+      {/* Task table */}
+      <div className="section-card !p-5 sm:!p-6">
+        <TaskTable />
       </div>
     </div>
   );

@@ -11,18 +11,19 @@ const AppLayout = () => {
     <AuthProvider>
       <SidebarProvider>
         <Asidebar />
-        <SidebarInset className="overflow-x-hidden relative bg-slate-50 dark:bg-slate-950">
-          {/* Animated Ambient Background Shapes */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-200/30 dark:bg-indigo-800/20 rounded-full blur-3xl pointer-events-none animate-ambient-glow" />
-          <div className="absolute top-1/3 right-10 w-80 h-80 bg-purple-200/30 dark:bg-purple-800/20 rounded-full blur-3xl pointer-events-none animate-ambient-glow-reverse" />
-          
-          <div className="w-full relative z-10">
-            <>
-              <Header />
-              <div className="px-4 lg:px-12 py-6 max-w-7xl mx-auto">
-                <Outlet />
-              </div>
-            </>
+        <SidebarInset className="overflow-x-hidden relative bg-slate-50 dark:bg-slate-950 min-h-screen">
+          {/* Ambient background blobs */}
+          <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+            <div className="absolute -top-32 left-1/4 w-[500px] h-[500px] bg-indigo-300/20 dark:bg-indigo-800/15 rounded-full blur-[120px] animate-ambient-glow" />
+            <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-purple-300/20 dark:bg-purple-800/15 rounded-full blur-[120px] animate-ambient-glow-reverse" />
+            <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-cyan-300/10 dark:bg-cyan-800/10 rounded-full blur-[100px] animate-ambient-glow" />
+          </div>
+
+          <div className="flex flex-col min-h-screen relative z-10">
+            <Header />
+            <div className="flex-1 px-4 sm:px-6 lg:px-8 py-6 max-w-[1400px] w-full mx-auto">
+              <Outlet />
+            </div>
             <CreateWorkspaceDialog />
             <CreateProjectDialog />
           </div>

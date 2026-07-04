@@ -105,21 +105,21 @@ export function NavProjects() {
   };
   return (
     <>
-      <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-        <SidebarGroupLabel className="w-full justify-between pr-0">
+      <SidebarGroup className="group-data-[collapsible=icon]:hidden px-2">
+        <SidebarGroupLabel className="w-full justify-between pr-0 text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1 mb-1">
           <span>Projects</span>
 
           <PermissionsGuard requiredPermission={Permissions.CREATE_PROJECT}>
             <button
               onClick={onOpen}
               type="button"
-              className="flex size-5 items-center justify-center rounded-full border"
+              className="flex size-6 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
             >
               <Plus className="size-3.5" />
             </button>
           </PermissionsGuard>
         </SidebarGroupLabel>
-        <SidebarMenu className="h-[320px] scrollbar overflow-y-auto pb-2">
+        <SidebarMenu className="h-[320px] scrollbar overflow-y-auto pb-2 gap-0.5">
           {isError ? <div>Error occured</div> : null}
           {isPending ? (
             <Loader
@@ -153,10 +153,21 @@ export function NavProjects() {
 
               return (
                 <SidebarMenuItem key={item._id}>
-                  <SidebarMenuButton asChild isActive={projectUrl === pathname}>
-                    <Link to={projectUrl}>
-                      {item.emoji}
-                      <span>{item.name}</span>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={projectUrl === pathname}
+                    className={`
+                      rounded-xl h-9 transition-all duration-200 text-[13px] font-medium
+                      ${
+                        projectUrl === pathname
+                          ? "bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 shadow-sm"
+                          : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-100"
+                      }
+                    `}
+                  >
+                    <Link to={projectUrl} className="flex items-center gap-2.5 px-2.5">
+                      <span className="text-base leading-none">{item.emoji}</span>
+                      <span className="truncate">{item.name}</span>
                     </Link>
                   </SidebarMenuButton>
                   <DropdownMenu>
