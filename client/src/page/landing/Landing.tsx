@@ -81,7 +81,7 @@ export default function Landing() {
       >
         <div className="flex items-center gap-10">
           <Link to="/" className="flex items-center gap-3 group">
-            <Logo />
+            <Logo asLink={false} />
             <span className="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
               GPMS
             </span>
@@ -739,7 +739,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2 flex flex-col gap-6">
             <Link to="/" className="flex items-center gap-3 group">
-              <Logo />
+              <Logo asLink={false} />
               <span className="font-extrabold text-2xl tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
                 GPMS
               </span>
