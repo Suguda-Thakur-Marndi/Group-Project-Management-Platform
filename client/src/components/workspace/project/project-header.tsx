@@ -46,20 +46,20 @@ const ProjectHeader = () => {
           </div>
         ) : (
           <>
-            {/* Emoji pill */}
-            <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+            {/* Emoji box */}
+            <div className="shrink-0 w-10 h-10 rounded-md bg-white border border-slate-200 flex items-center justify-center text-xl shadow-sm">
               {projectEmoji}
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white truncate">
+                <h1 className="text-2xl font-bold text-slate-900 truncate">
                   {projectName}
                 </h1>
                 <PermissionsGuard requiredPermission={Permissions.EDIT_PROJECT}>
                   <EditProjectDialog project={project} />
                 </PermissionsGuard>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Project board · All tasks
               </p>
             </div>

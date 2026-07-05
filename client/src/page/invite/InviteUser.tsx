@@ -59,7 +59,7 @@ const InviteUser = () => {
           to="/"
           className="flex items-center gap-2 self-center font-medium"
         >
-          <Logo asLink={false} />
+          <Logo />
           GPMS
         </Link>
         <div className="flex flex-col gap-6">

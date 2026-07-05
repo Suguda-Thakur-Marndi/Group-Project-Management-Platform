@@ -49,16 +49,16 @@ const Asidebar = () => {
     <>
       <Sidebar
         collapsible="icon"
-        className="border-r border-slate-200 dark:border-slate-800/70 bg-white dark:bg-slate-900 shadow-sm"
+        className="border-r border-slate-200 bg-white"
       >
         {/* Header */}
-        <SidebarHeader className="border-b border-slate-100 !py-3 dark:border-slate-800/60">
-          <div className="flex h-11 w-full items-center justify-start gap-2 overflow-hidden px-2">
+        <SidebarHeader className="border-b border-slate-200 !py-0">
+          <div className="flex h-14 w-full items-center justify-start gap-2 overflow-hidden px-3">
             <Logo url={`/workspace/${workspaceId}`} />
             {open && (
               <Link
                 to={`/workspace/${workspaceId}`}
-                className="ml-1 hidden items-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-lg font-extrabold tracking-tight text-transparent transition-opacity hover:opacity-80 md:flex"
+                className="ml-1 hidden items-center text-sm font-bold tracking-tight text-slate-900 hover:text-slate-700 transition-colors md:flex"
               >
                 GPMS
               </Link>
@@ -67,44 +67,43 @@ const Asidebar = () => {
         </SidebarHeader>
 
         {/* Content */}
-        <SidebarContent className="!mt-0 dark:bg-transparent overflow-y-auto scrollbar">
+        <SidebarContent className="!mt-0 bg-white overflow-y-auto scrollbar">
           <SidebarGroup className="!py-0">
-            <SidebarGroupContent className="space-y-1 pt-2">
+            <SidebarGroupContent className="space-y-0 pt-2">
               <WorkspaceSwitcher />
-              <Separator className="mx-2 my-2 w-auto bg-slate-100 dark:bg-slate-800/60" />
               <NavMain />
-              <Separator className="mx-2 my-2 w-auto bg-slate-100 dark:bg-slate-800/60" />
+              <Separator className="mx-2 my-1 w-auto bg-slate-100" />
               <NavProjects />
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
 
         {/* Footer */}
-        <SidebarFooter className="dark:bg-transparent py-3 border-t border-slate-100 dark:border-slate-800/60">
+        <SidebarFooter className="bg-white py-3 border-t border-slate-200">
           <SidebarMenu>
             <SidebarMenuItem>
               {isLoading ? (
                 <div className="flex items-center justify-center py-2">
-                  <Loader size={20} className="animate-spin text-indigo-500" />
+                  <Loader size={16} className="animate-spin text-slate-400" />
                 </div>
               ) : (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <SidebarMenuButton
                       size="lg"
-                      className="w-full rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors data-[state=open]:bg-indigo-50 dark:data-[state=open]:bg-indigo-900/20"
+                      className="w-full rounded-lg hover:bg-slate-50 transition-colors data-[state=open]:bg-slate-50"
                     >
-                      <Avatar className="h-8 w-8 rounded-full ring-2 ring-indigo-100 dark:ring-indigo-900 shadow-sm">
+                      <Avatar className="h-8 w-8 rounded-full">
                         <AvatarImage src={user?.profilePicture || ""} />
-                        <AvatarFallback className="rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-xs">
+                        <AvatarFallback className="rounded-full bg-slate-800 text-white font-semibold text-xs">
                           {userInitials || "U"}
                         </AvatarFallback>
                       </Avatar>
                       <div className="grid flex-1 text-left text-sm leading-tight min-w-0">
-                        <span className="truncate font-semibold text-slate-900 dark:text-slate-100 text-[13px]">
+                        <span className="truncate font-semibold text-slate-900 text-[13px]">
                           {user?.name}
                         </span>
-                        <span className="truncate text-[11px] text-slate-500 dark:text-slate-400">
+                        <span className="truncate text-[11px] text-slate-500">
                           {user?.email}
                         </span>
                       </div>
@@ -113,27 +112,27 @@ const Asidebar = () => {
                   </DropdownMenuTrigger>
 
                   <DropdownMenuContent
-                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-1.5"
+                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg shadow-lg border border-slate-200 bg-white p-1"
                     side="bottom"
                     align="start"
-                    sideOffset={6}
+                    sideOffset={4}
                   >
-                    {/* User info header in dropdown */}
-                    <div className="px-3 py-2.5 mb-1 rounded-lg bg-slate-50 dark:bg-slate-800/50">
-                      <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">
+                    {/* User info */}
+                    <div className="px-3 py-2 mb-1 rounded-md bg-slate-50">
+                      <p className="text-sm font-semibold text-slate-900 truncate">
                         {user?.name}
                       </p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                      <p className="text-xs text-slate-500 truncate mt-0.5">
                         {user?.email}
                       </p>
                     </div>
 
                     <DropdownMenuGroup />
-                    <DropdownMenuSeparator className="bg-slate-100 dark:bg-slate-800 my-1" />
+                    <DropdownMenuSeparator className="bg-slate-100 my-1" />
 
                     <DropdownMenuItem
                       onClick={() => setIsOpen(true)}
-                      className="cursor-pointer rounded-lg px-3 py-2.5 flex items-center gap-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors focus:bg-red-50 dark:focus:bg-red-950/30 focus:text-red-600"
+                      className="cursor-pointer rounded-md px-3 py-2 flex items-center gap-2 text-red-600 hover:bg-red-50 transition-colors focus:bg-red-50 focus:text-red-600"
                     >
                       <LogOut className="h-4 w-4" />
                       <span className="font-medium text-sm">Log out</span>

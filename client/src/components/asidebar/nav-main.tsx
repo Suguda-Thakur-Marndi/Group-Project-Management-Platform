@@ -63,8 +63,8 @@ export function NavMain() {
   ];
 
   return (
-    <SidebarGroup className="px-2">
-      <SidebarMenu className="gap-0.5">
+    <SidebarGroup className="px-2 py-1">
+      <SidebarMenu className="gap-0">
         {items.map((item) => {
           const isActive = item.url === pathname;
           return (
@@ -73,25 +73,22 @@ export function NavMain() {
                 isActive={isActive}
                 asChild
                 className={`
-                  rounded-xl h-10 transition-all duration-200 font-medium text-[13.5px]
+                  rounded-md h-9 transition-colors duration-150 text-[13px] font-medium
                   ${isActive
-                    ? "bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 shadow-sm"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-100"
+                    ? "text-indigo-600 bg-indigo-50 hover:bg-indigo-50"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                   }
                 `}
               >
-                <Link to={item.url} className="flex items-center gap-3 px-3">
+                <Link to={item.url} className="flex items-center gap-2.5 px-2.5">
                   <item.icon
                     className={`w-4 h-4 shrink-0 ${
                       isActive
-                        ? "text-indigo-600 dark:text-indigo-400"
-                        : "text-slate-500 dark:text-slate-400"
+                        ? "text-indigo-600"
+                        : "text-slate-400"
                     }`}
                   />
                   <span>{item.title}</span>
-                  {isActive && (
-                    <div className="ml-auto w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400" />
-                  )}
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

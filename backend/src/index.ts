@@ -22,10 +22,6 @@ import taskRoutes from "./routes/task.route";
 
 const app = express();
 const BASE_PATH = config.BASE_PATH;
-const allowedOrigins = config.FRONTEND_ORIGIN
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
 
 app.use(express.json());
 
@@ -52,12 +48,31 @@ app.use(passport.session());
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
-      }
+      // Allow requests with no origin (e.g. mobile apps, curl)
+      if (!origin) return callback(null, true);
 
-      callback(null, false);
+      const allowedOrigins = [
+        config.FRONTEND_ORIGIN,
+        // Allow all localhost Vite dev ports (5173-5180) during development
+        ...(config.NODE_ENV === "development"
+          ? [
+              "http://localhost:5173",
+              "http://localhost:5174",
+              "http://localhost:5175",
+              "http://localhost:5176",
+              "http://localhost:5177",
+              "http://localhost:5178",
+              "http://localhost:5179",
+              "http://localhost:5180",
+            ]
+          : []),
+      ];
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS: origin '${origin}' not allowed`));
+      }
     },
     credentials: true,
   })
