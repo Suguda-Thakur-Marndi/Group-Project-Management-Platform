@@ -15,7 +15,7 @@ const usePermissions = (
       );
       if (member) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setPermissions(member.role.permissions || []);
+        setPermissions(member.role?.permissions || []);
       }
     }
   }, [user, workspace]);

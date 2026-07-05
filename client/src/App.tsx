@@ -1,12 +1,15 @@
 import AppRoutes from "./routes";
 import QueryProvider from "./context/query-provider";
 import { Toaster } from "./components/ui/toaster";
+import { ThemeProvider } from "./context/theme-provider";
 
 function App() {
   return (
     <QueryProvider>
-      <AppRoutes />
-      <Toaster />
+      <ThemeProvider defaultTheme="light" storageKey="gpms-theme">
+        <AppRoutes />
+        <Toaster />
+      </ThemeProvider>
     </QueryProvider>
   );
 }

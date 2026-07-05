@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --font-sans: 'Inter', system-ui, sans-serif;
@@ -21,7 +23,7 @@
     margin: 0;
     overflow-x: hidden;
     font-family: var(--font-sans);
-    @apply bg-white text-slate-900 antialiased;
+    @apply bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -32,12 +34,12 @@
 
 /* === CLEAN CARD === */
 .clean-card {
-  @apply bg-white border border-slate-200 rounded-lg shadow-sm;
+  @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm;
 }
 
 /* === SIDEBAR ACTIVE STATE === */
 .sidebar-active {
-  @apply text-indigo-600 font-semibold;
+  @apply text-indigo-600 dark:text-indigo-400 font-semibold;
 }
 
 /* === CUSTOM SCROLLBAR === */
@@ -54,12 +56,12 @@
 
 .scrollbar::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-200 rounded-full;
+  @apply bg-slate-200 dark:bg-slate-800 rounded-full;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover,
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-300;
+  @apply bg-slate-300 dark:bg-slate-700;
 }
 
 /* === INTERACTIVE TABLE ROWS === */
@@ -143,5 +145,5 @@
 
 /* Section card */
 .section-card {
-  @apply border border-slate-200 rounded-lg bg-white p-6;
+  @apply border border-slate-200 dark:border-slate-800 rounded-lg bg-white dark:bg-slate-900 p-6;
 }

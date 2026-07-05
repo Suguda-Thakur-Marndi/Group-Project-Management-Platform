@@ -107,14 +107,14 @@ export function NavProjects() {
   return (
     <>
       <SidebarGroup className="group-data-[collapsible=icon]:hidden px-2 py-1">
-        <SidebarGroupLabel className="w-full justify-between pr-0 text-xs font-semibold uppercase tracking-wider text-slate-400 px-1 mb-0.5">
+        <SidebarGroupLabel className="w-full justify-between pr-0 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1 mb-0.5">
           <span>Projects</span>
 
           <PermissionsGuard requiredPermission={Permissions.CREATE_PROJECT}>
             <button
               onClick={onOpen}
               type="button"
-              className="flex size-5 items-center justify-center rounded text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex size-5 items-center justify-center rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               <Plus className="size-3.5" />
             </button>
@@ -140,7 +140,7 @@ export function NavProjects() {
                 <Button
                   variant="link"
                   type="button"
-                  className="h-auto p-0 text-xs text-indigo-600 font-semibold mt-2 underline-offset-2"
+                  className="h-auto p-0 text-xs text-indigo-600 dark:text-indigo-400 font-semibold mt-2 underline-offset-2"
                   onClick={onOpen}
                 >
                   Create a project
@@ -161,8 +161,8 @@ export function NavProjects() {
                       rounded-md h-9 transition-colors duration-150 text-[13px] font-medium
                       ${
                         projectUrl === pathname
-                          ? "bg-indigo-50 text-indigo-700 hover:bg-indigo-50"
-                          : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                          ? "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40"
+                          : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
                       }
                     `}
                   >
@@ -179,26 +179,26 @@ export function NavProjects() {
                       </SidebarMenuAction>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
-                      className="w-44 rounded-lg border border-slate-200 shadow-md bg-white p-1"
+                      className="w-44 rounded-lg border border-slate-200 dark:border-slate-800 shadow-md bg-white dark:bg-slate-900 p-1"
                       side={isMobile ? "bottom" : "right"}
                       align={isMobile ? "end" : "start"}
                     >
                       <DropdownMenuItem
                         onClick={() => navigate(`${projectUrl}`)}
-                        className="rounded-md text-sm cursor-pointer"
+                        className="rounded-md text-sm cursor-pointer dark:hover:bg-slate-800"
                       >
-                        <Folder className="w-4 h-4 text-slate-400 mr-2" />
+                        <Folder className="w-4 h-4 text-slate-400 dark:text-slate-500 mr-2" />
                         <span>View Project</span>
                       </DropdownMenuItem>
 
                       <PermissionsGuard
                         requiredPermission={Permissions.DELETE_PROJECT}
                       >
-                        <DropdownMenuSeparator className="bg-slate-100 my-1" />
+                        <DropdownMenuSeparator className="bg-slate-100 dark:bg-slate-800 my-1" />
                         <DropdownMenuItem
                           disabled={isLoading}
                           onClick={() => onOpenDialog(item)}
-                          className="rounded-md text-sm cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-50"
+                          className="rounded-md text-sm cursor-pointer text-red-600 dark:text-red-400 focus:text-red-600 dark:focus:text-red-400 focus:bg-red-50 dark:focus:bg-red-950/30"
                         >
                           <Trash2 className="w-4 h-4 mr-2" />
                           <span>Delete Project</span>
@@ -214,7 +214,7 @@ export function NavProjects() {
           {hasMore && (
             <SidebarMenuItem>
               <SidebarMenuButton
-                className="text-slate-400 hover:text-slate-600 text-xs rounded-md"
+                className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-xs rounded-md dark:hover:bg-slate-800"
                 disabled={isFetching}
                 onClick={fetchNextPage}
               >

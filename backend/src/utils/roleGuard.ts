@@ -6,8 +6,18 @@ export const roleGuard = (
   role: keyof typeof RolePermissions,
   requiredPermissions: PermissionType[]
 ) => {
+  if (!role) {
+    throw new UnauthorizedException(
+      "You do not have a valid role in this workspace"
+    );
+  }
+
   const permissions = RolePermissions[role];
-  // If the role doesn't exist or lacks required permissions, throw an exception
+  if (!permissions) {
+    throw new UnauthorizedException(
+      "Your role is invalid or has no permissions"
+    );
+  }
 
   const hasPermission = requiredPermissions.every((permission) =>
     permissions.includes(permission)

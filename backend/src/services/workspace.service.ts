@@ -84,6 +84,20 @@ export const getWorkspaceByIdService = async (workspaceId: string) => {
     workspaceId,
   }).populate("role");
 
+  // Auto-heal logic for missing/orphaned member roles
+  const ownerRole = await RoleModel.findOne({ name: Roles.OWNER });
+  const memberRole = await RoleModel.findOne({ name: Roles.MEMBER });
+
+  for (const member of members) {
+    if (!member.role && ownerRole && memberRole) {
+      const isOwner = workspace.owner.equals(member.userId);
+      const targetRole = isOwner ? ownerRole : memberRole;
+      member.role = targetRole._id as any;
+      await member.save();
+      member.role = targetRole;
+    }
+  }
+
   const workspaceWithMembers = {
     ...workspace.toObject(),
     members,
@@ -106,6 +120,21 @@ export const getWorkspaceMembersService = async (workspaceId: string) => {
   })
     .populate("userId", "name email profilePicture -password")
     .populate("role", "name");
+
+  // Auto-heal logic for missing/orphaned member roles
+  const ownerRole = await RoleModel.findOne({ name: Roles.OWNER });
+  const memberRole = await RoleModel.findOne({ name: Roles.MEMBER });
+  const workspace = await WorkspaceModel.findById(workspaceId);
+
+  for (const member of members) {
+    if (!member.role && ownerRole && memberRole && workspace) {
+      const memberUserId = (member.userId as any)?._id || member.userId;
+      const isOwner = workspace.owner.equals(memberUserId);
+      const targetRole = isOwner ? ownerRole : memberRole;
+      await MemberModel.updateOne({ _id: member._id }, { role: targetRole._id });
+      member.role = targetRole;
+    }
+  }
 
   const roles = await RoleModel.find({}, { name: 1, _id: 1 })
     .select("-permission")

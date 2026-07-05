@@ -27,7 +27,6 @@ import {
 import Logo from "@/components/logo";
 
 export default function Landing() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<string>("kanban");
   const [statCount, setStatCount] = useState<number>(0);
 
@@ -37,10 +36,6 @@ export default function Landing() {
     }, 30);
     return () => clearInterval(interval);
   }, []);
-
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
 
   const featuresList = [
     { title: "Kanban Board", description: "Organize tasks visually with fully customizable workflow columns and drag-and-drop ease.", icon: Layout, color: "from-blue-500 to-indigo-500" },
@@ -55,13 +50,6 @@ export default function Landing() {
     { title: "Analytics Dashboard", description: "Gain actionable insights into team velocity, overdue tasks, and project completion rates.", icon: BarChart3, color: "from-indigo-500 to-purple-600" },
     { title: "Role Based Access", description: "Ensure enterprise-grade security with fine-grained permissions and custom user roles.", icon: Shield, color: "from-cyan-500 to-blue-600" },
     { title: "Dark Mode", description: "Work comfortably at any hour with an elegant, expertly crafted dark visual theme.", icon: Moon, color: "from-blue-500 to-cyan-400" },
-  ];
-
-  const faqList = [
-    { question: "How does GPMS differ from Jira or ClickUp?", answer: "GPMS combines the power of enterprise project management with the lightning-fast performance and clean, minimalist aesthetics of modern apps like Linear. We eliminate clutter while providing powerful features like real-time team chat, video syncs, and advanced analytics in one unified platform." },
-    { question: "Can I invite external clients to my workspace?", answer: "Yes! You can easily generate secure invitation links to bring team members, contractors, or clients into specific workspaces with custom role-based access controls." },
-    { question: "Is there a free trial available?", answer: "Absolutely. Our Free tier gives you full access to unlimited tasks, core project boards, and real-time collaboration for up to 5 members forever—no credit card required." },
-    { question: "How secure is my project data?", answer: "We implement industry-standard encryption, secure session handling, and robust OAuth identity verification to ensure your project files and discussions remain strictly confidential and protected." },
   ];
 
   return (
@@ -685,53 +673,6 @@ export default function Landing() {
             </div>
           </div>
         </section>
-
-        {/* 10. FAQ Section */}
-        <section className="py-28 px-4 sm:px-6 lg:px-12 max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-xs font-bold tracking-widest text-purple-400 uppercase mb-3">CLEAR ANSWERS</h2>
-            <p className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-100">
-              Frequently Asked Questions
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {faqList.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="border border-slate-800/80 bg-slate-900/50 rounded-2xl overflow-hidden backdrop-blur-xl shadow-md transition-colors hover:border-slate-700"
-              >
-                <button
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left font-bold text-lg text-slate-100 flex items-center justify-between gap-4 focus:outline-none"
-                >
-                  <span>{faq.question}</span>
-                  <span className={`p-2 rounded-xl bg-slate-800 text-slate-400 transition-transform duration-300 ${activeFaq === idx ? "rotate-180 bg-indigo-500/20 text-indigo-400" : ""}`}>
-                    {activeFaq === idx ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                  </span>
-                </button>
-                <AnimatePresence>
-                  {activeFaq === idx && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="px-6 pb-6 text-slate-400 text-sm leading-relaxed font-normal border-t border-slate-800/60 pt-4"
-                    >
-                      {faq.answer}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
       </main>
 
       {/* 11. Footer */}

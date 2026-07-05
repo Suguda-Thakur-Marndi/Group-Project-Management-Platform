@@ -69,12 +69,12 @@ const SignUp = () => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-[100px] animate-ambient-glow" />
 
         <div className="relative z-10 max-w-sm text-center">
-          <Link to="/" className="flex items-center gap-3 justify-center mb-10">
+          <div className="flex items-center gap-3 justify-center mb-10">
             <Logo />
             <span className="font-extrabold text-3xl bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent tracking-tight">
               GPMS
             </span>
-          </Link>
+          </div>
 
           <h2 className="text-3xl font-extrabold text-white mb-4 leading-tight">
             Start shipping faster
@@ -107,15 +107,12 @@ const SignUp = () => {
 
         <div className="w-full max-w-sm relative z-10">
           {/* Mobile logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 self-start mb-8 lg:hidden"
-          >
+          <div className="flex items-center gap-2 self-start mb-8 lg:hidden">
             <Logo />
             <span className="font-extrabold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               GPMS
             </span>
-          </Link>
+          </div>
 
           {/* Card */}
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8">

@@ -75,8 +75,8 @@ export function NavMain() {
                 className={`
                   rounded-md h-9 transition-colors duration-150 text-[13px] font-medium
                   ${isActive
-                    ? "text-indigo-600 bg-indigo-50 hover:bg-indigo-50"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-50 dark:hover:bg-indigo-950/40"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
                   }
                 `}
               >
@@ -84,8 +84,8 @@ export function NavMain() {
                   <item.icon
                     className={`w-4 h-4 shrink-0 ${
                       isActive
-                        ? "text-indigo-600"
-                        : "text-slate-400"
+                        ? "text-indigo-600 dark:text-indigo-400"
+                        : "text-slate-400 dark:text-slate-500"
                     }`}
                   />
                   <span>{item.title}</span>

@@ -30,6 +30,17 @@ export const getMemberRoleInWorkspace = async (
     );
   }
 
+  if (!member.role) {
+    const isOwner = workspace.owner.equals(userId);
+    const targetRoleName = isOwner ? Roles.OWNER : Roles.MEMBER;
+    const dbRole = await RoleModel.findOne({ name: targetRoleName });
+    if (dbRole) {
+      member.role = dbRole._id as any;
+      await member.save();
+      return { role: targetRoleName };
+    }
+  }
+
   const roleName = member.role?.name;
 
   return { role: roleName };

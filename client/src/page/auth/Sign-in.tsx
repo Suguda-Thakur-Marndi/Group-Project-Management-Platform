@@ -77,12 +77,12 @@ const SignIn = () => {
 
         <div className="relative z-10 max-w-sm text-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 justify-center mb-10">
+          <div className="flex items-center gap-3 justify-center mb-10">
             <Logo />
             <span className="font-extrabold text-3xl bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
               GPMS
             </span>
-          </Link>
+          </div>
 
           <h2 className="text-3xl font-extrabold text-white mb-4 leading-tight">
             Manage projects with
@@ -114,15 +114,12 @@ const SignIn = () => {
 
         <div className="w-full max-w-sm relative z-10">
           {/* Mobile logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 self-start mb-8 lg:hidden"
-          >
+          <div className="flex items-center gap-2 self-start mb-8 lg:hidden">
             <Logo />
             <span className="font-extrabold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               GPMS
             </span>
-          </Link>
+          </div>
 
           {/* Card */}
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-8">
