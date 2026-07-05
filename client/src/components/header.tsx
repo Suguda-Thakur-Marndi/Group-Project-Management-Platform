@@ -66,21 +66,24 @@ const Header = () => {
         </Breadcrumb>
       </div>
 
-      <div className="ml-auto flex shrink-0 items-center gap-1">
+      <div className="ml-auto flex shrink-0 items-center gap-2">
+        {/* Search pill */}
         <button
-          className="hidden rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 sm:inline-flex"
+          className="hidden sm:flex items-center gap-2 h-8 px-3 rounded-lg text-xs font-medium text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800/60 hover:bg-slate-200 dark:hover:bg-slate-700/60 hover:text-slate-600 dark:hover:text-slate-300 transition-colors border border-slate-200 dark:border-slate-700/60"
           aria-label="Search"
         >
-          <Search className="h-4 w-4" />
+          <Search className="h-3.5 w-3.5" />
+          <span>Search...</span>
         </button>
+
+        {/* Notifications */}
         <button
-          className="relative hidden rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 sm:inline-flex"
+          className="relative flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400 border border-slate-200 dark:border-slate-700/60"
           aria-label="Notifications"
         >
           <Bell className="h-4 w-4" />
-          <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500" />
+          <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 ring-1 ring-white dark:ring-slate-900" />
         </button>
-        <Separator orientation="vertical" className="ml-1 hidden h-5 sm:block" />
       </div>
     </header>
   );

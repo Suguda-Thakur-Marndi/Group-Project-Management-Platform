@@ -21,7 +21,7 @@ const AppLayout = () => {
 
           <div className="relative z-10 flex min-h-screen flex-col">
             <Header />
-            <div className="mx-auto flex-1 w-full max-w-7xl px-3 py-4 sm:px-5 sm:py-5 lg:px-8 lg:py-6">
+            <div className="mx-auto flex-1 w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-7">
               <Outlet />
             </div>
             <CreateWorkspaceDialog />

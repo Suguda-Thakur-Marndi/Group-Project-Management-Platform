@@ -83,16 +83,16 @@ export function WorkspaceSwitcher() {
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton
                 size="lg"
-                className="rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800/60 transition-colors"
+                className="relative h-14 rounded-xl px-2 py-2 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/60 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800/60"
               >
                 {activeWorkspace ? (
                   <>
                     {/* Workspace avatar */}
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-sm">
+                    <div className="absolute left-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-sm font-bold text-white shadow-sm">
                       {initial}
                     </div>
-                    <div className="grid flex-1 text-left text-sm leading-tight min-w-0">
-                      <span className="truncate font-semibold text-slate-900 dark:text-slate-100 text-[13px]">
+                    <div className="absolute left-12 top-1/2 flex min-w-0 max-w-[calc(100%-3.75rem)] -translate-y-1/2 flex-col text-left leading-tight">
+                      <span className="truncate text-[13px] font-semibold text-slate-900 dark:text-slate-100">
                         {activeWorkspace?.name}
                       </span>
                       <span className="truncate text-[11px] text-slate-500 dark:text-slate-400">
@@ -101,13 +101,13 @@ export function WorkspaceSwitcher() {
                     </div>
                   </>
                 ) : (
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold text-slate-500 dark:text-slate-400">
+                  <div className="absolute left-12 top-1/2 flex min-w-0 max-w-[calc(100%-3.75rem)] -translate-y-1/2 flex-col text-left leading-tight">
+                    <span className="truncate text-[13px] font-semibold text-slate-500 dark:text-slate-400">
                       No Workspace selected
                     </span>
                   </div>
                 )}
-                <ChevronDown className="ml-auto w-4 h-4 text-slate-400 shrink-0" />
+                <ChevronDown className="absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 shrink-0 text-slate-400" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
 
