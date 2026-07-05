@@ -29,18 +29,18 @@ const Header = () => {
   const pageHeading = getPageLabel(pathname);
 
   return (
-    <header className="flex sticky top-0 z-50 h-14 shrink-0 items-center px-4 glass-nav">
-      <div className="flex flex-1 items-center gap-3 min-w-0">
-        <SidebarTrigger className="rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900/40 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shrink-0" />
-        <Separator orientation="vertical" className="mr-1 h-5 shrink-0" />
+    <header className="sticky top-0 z-50 flex h-14 shrink-0 items-center px-3 sm:px-4 glass-nav">
+      <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+        <SidebarTrigger className="h-8 w-8 shrink-0 rounded-lg transition-colors hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-900/40 dark:hover:text-indigo-400" />
+        <Separator orientation="vertical" className="mr-1 hidden h-5 shrink-0 sm:block" />
         <Breadcrumb className="min-w-0">
           <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
+            <BreadcrumbItem className="hidden sm:block">
               {pageHeading ? (
                 <BreadcrumbLink asChild>
                   <Link
                     to={`/workspace/${workspaceId}`}
-                    className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    className="text-sm font-medium text-slate-500 transition-colors hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
                   >
                     Dashboard
                   </Link>
@@ -54,7 +54,7 @@ const Header = () => {
 
             {pageHeading && (
               <>
-                <BreadcrumbSeparator className="hidden md:block text-slate-400" />
+                <BreadcrumbSeparator className="hidden sm:block text-slate-400" />
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                     {pageHeading}
@@ -66,22 +66,21 @@ const Header = () => {
         </Breadcrumb>
       </div>
 
-      {/* Right side actions */}
-      <div className="flex items-center gap-1 ml-auto shrink-0">
+      <div className="ml-auto flex shrink-0 items-center gap-1">
         <button
-          className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="hidden rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 sm:inline-flex"
           aria-label="Search"
         >
-          <Search className="w-4 h-4" />
+          <Search className="h-4 w-4" />
         </button>
         <button
-          className="relative p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="relative hidden rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 sm:inline-flex"
           aria-label="Notifications"
         >
-          <Bell className="w-4 h-4" />
-          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500" />
+          <Bell className="h-4 w-4" />
+          <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500" />
         </button>
-        <Separator orientation="vertical" className="ml-1 h-5" />
+        <Separator orientation="vertical" className="ml-1 hidden h-5 sm:block" />
       </div>
     </header>
   );

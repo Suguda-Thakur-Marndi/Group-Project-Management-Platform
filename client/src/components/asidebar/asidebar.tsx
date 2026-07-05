@@ -52,13 +52,13 @@ const Asidebar = () => {
         className="border-r border-slate-200 dark:border-slate-800/70 bg-white dark:bg-slate-900 shadow-sm"
       >
         {/* Header */}
-        <SidebarHeader className="!py-3 border-b border-slate-100 dark:border-slate-800/60">
-          <div className="flex h-11 items-center justify-start w-full px-2 gap-2">
+        <SidebarHeader className="border-b border-slate-100 !py-3 dark:border-slate-800/60">
+          <div className="flex h-11 w-full items-center justify-start gap-2 overflow-hidden px-2">
             <Logo url={`/workspace/${workspaceId}`} />
             {open && (
               <Link
                 to={`/workspace/${workspaceId}`}
-                className="hidden md:flex ml-1 items-center font-extrabold text-lg tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+                className="ml-1 hidden items-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-lg font-extrabold tracking-tight text-transparent transition-opacity hover:opacity-80 md:flex"
               >
                 GPMS
               </Link>

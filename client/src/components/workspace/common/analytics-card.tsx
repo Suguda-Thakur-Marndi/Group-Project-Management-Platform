@@ -57,9 +57,7 @@ const AnalyticsCard = (props: {
   const TrendIcon = trend.icon;
 
   return (
-    <Card className="w-full relative overflow-hidden border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 rounded-2xl group">
-      {/* Gradient top accent bar */}
-      <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${config.bg}`} />
+    <Card className="w-full border border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 rounded-2xl group">
 
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-3 pt-5 px-5">
         <div className="space-y-1">

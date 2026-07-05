@@ -70,7 +70,7 @@ const SignUp = () => {
 
         <div className="relative z-10 max-w-sm text-center">
           <Link to="/" className="flex items-center gap-3 justify-center mb-10">
-            <Logo />
+            <Logo asLink={false} />
             <span className="font-extrabold text-3xl bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent tracking-tight">
               GPMS
             </span>
@@ -111,7 +111,7 @@ const SignUp = () => {
             to="/"
             className="flex items-center gap-2 self-start mb-8 lg:hidden"
           >
-            <Logo />
+            <Logo asLink={false} />
             <span className="font-extrabold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               GPMS
             </span>

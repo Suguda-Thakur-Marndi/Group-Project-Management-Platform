@@ -114,7 +114,7 @@ export function WorkspaceSwitcher() {
             <DropdownMenuContent
               className="w-[--radix-dropdown-menu-trigger-width] min-w-60 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-1.5"
               align="start"
-              side={isMobile ? "bottom" : "right"}
+              side="bottom"
               sideOffset={6}
             >
               <DropdownMenuLabel className="text-[11px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 px-2 py-1.5">
