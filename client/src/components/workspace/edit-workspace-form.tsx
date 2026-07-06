@@ -80,31 +80,32 @@ export default function EditWorkspaceForm() {
   };
 
   return (
-    <div className="w-full h-auto max-w-full">
-      <div className="h-full">
-        <div className="mb-5 border-b">
-          <h1
-            className="text-[17px] tracking-[-0.16px] dark:text-[#fcfdffef] font-semibold mb-1.5
-           text-center sm:text-left"
-          >
-            Edit Workspace
-          </h1>
+    <div className="w-full max-w-full">
+      <div className="space-y-5">
+        <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 dark:border-slate-800 dark:bg-slate-950/40">
+          <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+            Workspace details
+          </p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Update how this workspace appears to your team and how it is described.
+          </p>
         </div>
+
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="mb-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="dark:text-[#f1f7feb5] text-sm">
+                    <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-200">
                       Workspace name
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Taco's Co."
-                        className="!h-[48px] disabled:opacity-90 disabled:pointer-events-none"
+                        className="mt-1.5 h-11 disabled:cursor-not-allowed disabled:opacity-90"
                         disabled={!canEditWorkspace}
                         {...field}
                       />
@@ -114,15 +115,16 @@ export default function EditWorkspaceForm() {
                 )}
               />
             </div>
-            <div className="mb-4">
+
+            <div className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
               <FormField
                 control={form.control}
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="dark:text-[#f1f7feb5] text-sm">
+                    <FormLabel className="text-sm font-medium text-slate-700 dark:text-slate-200">
                       Workspace description
-                      <span className="text-xs font-extralight ml-2">
+                      <span className="ml-2 text-xs font-normal text-slate-400">
                         Optional
                       </span>
                     </FormLabel>
@@ -130,7 +132,7 @@ export default function EditWorkspaceForm() {
                       <Textarea
                         rows={6}
                         disabled={!canEditWorkspace}
-                        className="disabled:opacity-90 disabled:pointer-events-none"
+                        className="mt-1.5 disabled:cursor-not-allowed disabled:opacity-90"
                         placeholder="Our team organizes marketing projects and tasks here."
                         {...field}
                       />
@@ -140,15 +142,18 @@ export default function EditWorkspaceForm() {
                 )}
               />
             </div>
+
             {canEditWorkspace && (
-              <Button
-                className="flex place-self-end  h-[40px] text-white font-semibold"
-                disabled={isPending}
-                type="submit"
-              >
-                {isPending && <Loader className="animate-spin" />}
-                Update Workspace
-              </Button>
+              <div className="flex justify-end">
+                <Button
+                  className="h-10 rounded-lg px-4 font-semibold text-white"
+                  disabled={isPending}
+                  type="submit"
+                >
+                  {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+                  Update Workspace
+                </Button>
+              </div>
             )}
           </form>
         </Form>

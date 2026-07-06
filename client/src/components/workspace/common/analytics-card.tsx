@@ -1,27 +1,39 @@
-import { Activity, Loader } from "lucide-react";
+import { CheckSquare, Clock, CheckCircle2, Loader } from "lucide-react";
 
 const cardConfig: Record<
   string,
   {
     dotColor: string;
-    valueColor: string;
     iconColor: string;
+    iconBg: string;
+    trendText: string;
+    trendColor: string;
+    icon: React.ElementType;
   }
 > = {
   "Total Task": {
-    dotColor: "bg-blue-500",
-    valueColor: "text-slate-900",
-    iconColor: "text-slate-300",
+    dotColor: "bg-indigo-500",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    iconBg: "bg-indigo-50 dark:bg-indigo-950/40",
+    trendText: "+8% from last week",
+    trendColor: "text-indigo-600 dark:text-indigo-400",
+    icon: CheckSquare,
   },
   "Overdue Task": {
-    dotColor: "bg-red-500",
-    valueColor: "text-slate-900",
-    iconColor: "text-slate-300",
+    dotColor: "bg-rose-500",
+    iconColor: "text-rose-600 dark:text-rose-400",
+    iconBg: "bg-rose-50 dark:bg-rose-950/30",
+    trendText: "-3% from yesterday",
+    trendColor: "text-rose-600 dark:text-rose-400",
+    icon: Clock,
   },
   "Completed Task": {
     dotColor: "bg-emerald-500",
-    valueColor: "text-slate-900",
-    iconColor: "text-slate-300",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    iconBg: "bg-emerald-50 dark:bg-emerald-950/40",
+    trendText: "+12% this month",
+    trendColor: "text-emerald-600 dark:text-emerald-400",
+    icon: CheckCircle2,
   },
 };
 
@@ -32,28 +44,42 @@ const AnalyticsCard = (props: {
 }) => {
   const { title, value, isLoading } = props;
   const config = cardConfig[title] || cardConfig["Total Task"];
+  const IconComponent = config.icon;
 
   return (
-    <div className="relative w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-colors duration-200">
-      {/* Header row */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
+    <div className="relative w-full h-[150px] premium-glass bg-white/70 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800/60 p-5 rounded-[16px] flex flex-col justify-between select-none group">
+      
+      {/* Top section: Title and Icon */}
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2.5">
           <span
-            className={`inline-block w-2 h-2 rounded-full ${config.dotColor}`}
+            className={`inline-block w-2.5 h-2.5 rounded-full ${config.dotColor} shadow-[0_0_8px_rgba(99,102,241,0.5)]`}
           />
-          <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{title}</p>
+          <p className="text-[13px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{title}</p>
         </div>
-        {/* Sparkline icon */}
-        <Activity className={`w-4 h-4 ${config.iconColor}`} strokeWidth={1.5} />
+        
+        {/* Icon shape container */}
+        <div className={`p-2 rounded-xl ${config.iconBg} border border-transparent dark:border-slate-800 transition-all duration-300 group-hover:scale-105`}>
+          <IconComponent className={`w-4 h-4 ${config.iconColor}`} strokeWidth={2} />
+        </div>
       </div>
 
-      {/* Value */}
-      <div>
-        {isLoading ? (
-          <Loader className="w-6 h-6 animate-spin text-slate-300 mt-1" />
-        ) : (
-          <span className={`text-4xl font-bold ${config.valueColor} dark:text-slate-100`}>
-            {value.toLocaleString()}
+      {/* Middle section: Large metric and loading */}
+      <div className="flex items-end justify-between mt-auto">
+        <div>
+          {isLoading ? (
+            <Loader className="w-8 h-8 animate-spin text-indigo-500 mt-1" />
+          ) : (
+            <span className="text-[42px] font-extrabold tracking-tight text-slate-900 dark:text-slate-100 leading-none">
+              {value.toLocaleString()}
+            </span>
+          )}
+        </div>
+
+        {/* Bottom section: Trend indicator */}
+        {!isLoading && (
+          <span className={`text-[11px] font-bold ${config.trendColor} bg-slate-50/50 dark:bg-slate-900/30 px-2 py-0.5 rounded-md border border-slate-100 dark:border-slate-800/40`}>
+            {config.trendText}
           </span>
         )}
       </div>

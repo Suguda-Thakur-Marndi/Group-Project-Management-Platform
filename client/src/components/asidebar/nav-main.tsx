@@ -6,6 +6,8 @@ import {
   Users,
   CheckCircle,
   LayoutDashboard,
+  FolderKanban,
+  Calendar,
 } from "lucide-react";
 import {
   SidebarGroup,
@@ -47,9 +49,19 @@ export function NavMain() {
       icon: CheckCircle,
     },
     {
+      title: "Projects",
+      url: `/workspace/${workspaceId}/projects`,
+      icon: FolderKanban,
+    },
+    {
       title: "Members",
       url: `/workspace/${workspaceId}/members`,
       icon: Users,
+    },
+    {
+      title: "Calendar",
+      url: `/workspace/${workspaceId}/calendar`,
+      icon: Calendar,
     },
     ...(canManageSettings
       ? [
@@ -64,25 +76,34 @@ export function NavMain() {
 
   return (
     <SidebarGroup className="px-2 py-1">
-      <SidebarMenu className="gap-0">
+      <SidebarMenu className="gap-1">
         {items.map((item) => {
-          const isActive = item.url === pathname;
+          // Strict dashboard match, prefix match for others
+          const isActive =
+            item.title === "Dashboard"
+              ? pathname === item.url
+              : pathname.startsWith(item.url);
+
           return (
-            <SidebarMenuItem key={item.title}>
+            <SidebarMenuItem key={item.title} className="relative">
+              {/* Left active indicator */}
+              {isActive && (
+                <div className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-md bg-indigo-600 dark:bg-indigo-500 z-10" />
+              )}
               <SidebarMenuButton
                 isActive={isActive}
                 asChild
                 className={`
-                  rounded-md h-9 transition-colors duration-150 text-[13px] font-medium
+                  rounded-xl h-10 transition-all duration-200 text-xs font-semibold
                   ${isActive
-                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-50 dark:hover:bg-indigo-950/40"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
+                    ? "text-indigo-600 dark:text-indigo-400 bg-indigo-50/70 dark:bg-indigo-950/30 font-bold"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-100"
                   }
                 `}
               >
-                <Link to={item.url} className="flex items-center gap-2.5 px-2.5">
+                <Link to={item.url} className="flex items-center gap-3 px-3">
                   <item.icon
-                    className={`w-4 h-4 shrink-0 ${
+                    className={`w-4 h-4 shrink-0 transition-transform duration-200 group-hover:scale-105 ${
                       isActive
                         ? "text-indigo-600 dark:text-indigo-400"
                         : "text-slate-400 dark:text-slate-500"

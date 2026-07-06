@@ -8,6 +8,7 @@ import { toast } from "@/hooks/use-toast";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { deleteWorkspaceMutationFn } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const DeleteWorkspaceCard = () => {
@@ -43,32 +44,38 @@ const DeleteWorkspaceCard = () => {
   };
   return (
     <>
-      <div className="w-full">
-        <div className="mb-5 border-b">
-          <h1
-            className="text-[17px] tracking-[-0.16px] dark:text-[#fcfdffef] font-semibold mb-1.5
-           text-center sm:text-left"
-          >
-            Delete Workspace
-          </h1>
+      <div className="w-full space-y-4">
+        <div className="rounded-2xl border border-red-200/80 bg-white/80 p-4 shadow-sm dark:border-red-900/60 dark:bg-slate-900/70">
+          <div className="flex items-start gap-3">
+            <div className="rounded-lg bg-red-100 p-2 text-red-600 dark:bg-red-950/40 dark:text-red-300">
+              <AlertTriangle className="h-4 w-4" />
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                Delete Workspace
+              </h2>
+              <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                This action permanently removes the workspace and all linked data, including projects, tasks, and member roles.
+              </p>
+            </div>
+          </div>
         </div>
 
         <PermissionsGuard
           showMessage
           requiredPermission={Permissions.DELETE_WORKSPACE}
         >
-          <div className="flex flex-col items-start justify-between py-0">
-            <div className="flex-1 mb-2">
-              <p>
-                Deleting a workspace is a permanent action and cannot be undone.
-                Once you delete a workspace, all its associated data, including
-                projects, tasks, and member roles, will be permanently removed.
-                Please proceed with caution and ensure this action is
-                intentional.
+          <div className="flex flex-col gap-4 rounded-2xl border border-slate-200/80 bg-white/80 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900/70">
+            <div className="space-y-1">
+              <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                Permanently remove this workspace
+              </p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Please confirm this is intentional before continuing.
               </p>
             </div>
             <Button
-              className="shrink-0 flex place-self-end h-[40px]"
+              className="h-10 shrink-0 rounded-lg px-4"
               variant="destructive"
               onClick={onOpenDialog}
             >
