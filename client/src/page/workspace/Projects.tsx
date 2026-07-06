@@ -67,8 +67,7 @@ const Projects = () => {
           </Button>
         </div>
       ) : (
-        /* Projects Grid */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">
           {projects.map((project) => {
             const creatorName = project.createdBy?.name || "Workspace Member";
             const initials = getAvatarFallbackText(creatorName);

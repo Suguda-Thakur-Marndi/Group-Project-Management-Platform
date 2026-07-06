@@ -16,7 +16,7 @@ const WorkspaceAnalytics = () => {
   const analytics = data?.analytics;
 
   return (
-    <div className="grid gap-4 md:gap-5 lg:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-4 md:gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
       <AnalyticsCard
         isLoading={isPending}
         title="Total Task"

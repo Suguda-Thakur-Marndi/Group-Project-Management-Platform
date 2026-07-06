@@ -36,7 +36,7 @@ const AppLayoutContent = ({
       <SidebarInset className="relative min-h-screen overflow-x-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
         <div className="relative flex min-h-screen flex-col">
           <Header />
-          <div className="mx-auto flex-1 w-full max-w-7xl p-6 sm:p-6 lg:p-6">
+          <div className="flex-1 w-full p-6">
             <Outlet />
           </div>
           <CreateWorkspaceDialog />
