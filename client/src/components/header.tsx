@@ -1,5 +1,4 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Link } from "react-router-dom";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { useTheme } from "@/context/theme-provider";
 import { useAuthContext } from "@/context/auth-provider";

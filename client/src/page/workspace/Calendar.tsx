@@ -14,7 +14,7 @@ import {
   getDay,
   isToday,
 } from "date-fns";
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, CheckSquare, Loader, Clock } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Loader, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { transformStatusEnum } from "@/lib/helper";
@@ -43,7 +43,7 @@ const CalendarView = () => {
   const startDayOffset = getDay(monthStart);
 
   // Pad the grid start with empty cells
-  const gridCells = Array.from({ length: startDayOffset }).map((_, i) => null);
+  const gridCells = Array.from({ length: startDayOffset }).map(() => null);
   const allCells = [...gridCells, ...daysInMonth];
 
   // Helper to get tasks due on a specific day
@@ -156,7 +156,7 @@ const CalendarView = () => {
                                 ? "bg-red-500"
                                 : task.priority === "MEDIUM"
                                 ? "bg-orange-500"
-                                : "bg-indigo-550"
+                                : "bg-indigo-500"
                             }
                           `}
                         />

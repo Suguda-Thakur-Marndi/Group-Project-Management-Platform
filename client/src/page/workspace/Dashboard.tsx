@@ -64,7 +64,7 @@ const WorkspaceDashboard = () => {
           </h2>
           <p className="mt-1.5 text-sm text-slate-500 dark:text-slate-400 font-medium">
             You have <span className="font-extrabold text-indigo-600 dark:text-indigo-400">{pendingTasksCount}</span> pending tasks and{" "}
-            <span className="font-extrabold text-indigo-650 dark:text-indigo-400">{activeProjectsCount}</span> active projects today.
+            <span className="font-extrabold text-indigo-600 dark:text-indigo-400">{activeProjectsCount}</span> active projects today.
           </p>
         </div>
         <Button

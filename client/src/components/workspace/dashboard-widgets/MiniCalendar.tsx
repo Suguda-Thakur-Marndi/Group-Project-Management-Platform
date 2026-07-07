@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import { getAllTasksQueryFn } from "@/lib/api";
@@ -33,7 +32,7 @@ const MiniCalendar = () => {
   // Weekday offset for the first day of current month
   const startDayOffset = getDay(monthStart);
 
-  const gridCells = Array.from({ length: startDayOffset }).map((_, i) => null);
+  const gridCells = Array.from({ length: startDayOffset }).map(() => null);
   const allCells = [...gridCells, ...daysInMonth];
 
   // Helper to check if a day has tasks due

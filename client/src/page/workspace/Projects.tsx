@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Folder, Calendar as CalendarIcon, User, ChevronRight, Loader } from "lucide-react";
+import { Plus, Calendar as CalendarIcon, ChevronRight, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import useGetProjectsInWorkspaceQuery from "@/hooks/api/use-get-projects";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Play,
@@ -18,7 +18,6 @@ import {
   Moon,
   Disc,
   Plus,
-  Minus,
   Check,
   TrendingUp,
   Briefcase,

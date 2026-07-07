@@ -64,7 +64,7 @@ const ProjectProgressCard = () => {
           <Loader className="w-5 h-5 animate-spin text-indigo-500" />
         </div>
       ) : progressList.length === 0 ? (
-        <div className="text-center py-6 text-xs text-slate-405 dark:text-slate-500 font-medium">
+        <div className="text-center py-6 text-xs text-slate-400 dark:text-slate-500 font-medium">
           Create a project to track its development progress.
         </div>
       ) : (

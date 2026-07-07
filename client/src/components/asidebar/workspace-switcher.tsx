@@ -35,8 +35,6 @@ export function WorkspaceSwitcher() {
   const { onOpen } = useCreateWorkspaceDialog();
   const workspaceId = useWorkspaceId();
 
-  const [activeWorkspace, setActiveWorkspace] = React.useState<WorkspaceType>();
-
   const { data, isPending } = useQuery({
     queryKey: ["userWorkspaces"],
     queryFn: getAllWorkspacesUserIsMemberQueryFn,
@@ -46,21 +44,20 @@ export function WorkspaceSwitcher() {
 
   const workspaces = data?.workspaces;
 
-  React.useEffect(() => {
-    if (workspaces?.length) {
-      const workspace = workspaceId
-        ? workspaces.find((ws) => ws._id === workspaceId)
-        : workspaces[0];
+  const activeWorkspace = React.useMemo(() => {
+    if (!workspaces?.length) return undefined;
+    return workspaceId
+      ? workspaces.find((ws) => ws._id === workspaceId)
+      : workspaces[0];
+  }, [workspaceId, workspaces]);
 
-      if (workspace) {
-        setActiveWorkspace(workspace);
-        if (!workspaceId) navigate(`/workspace/${workspace._id}`);
-      }
+  React.useEffect(() => {
+    if (workspaces?.length && !workspaceId && activeWorkspace) {
+      navigate(`/workspace/${activeWorkspace._id}`);
     }
-  }, [workspaceId, workspaces, navigate]);
+  }, [workspaceId, workspaces, activeWorkspace, navigate]);
 
   const onSelect = (workspace: WorkspaceType) => {
-    setActiveWorkspace(workspace);
     navigate(`/workspace/${workspace._id}`);
   };
 
@@ -82,7 +79,7 @@ export function WorkspaceSwitcher() {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="h-16 w-full rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 data-[state=open]:bg-slate-50 dark:data-[state=open]:bg-slate-800 text-slate-700 dark:text-slate-300 p-2.5 flex items-center gap-3 border border-transparent hover:border-slate-150 dark:hover:border-slate-800 cursor-pointer"
+              className="h-16 w-full rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 data-[state=open]:bg-slate-50 dark:data-[state=open]:bg-slate-800 text-slate-700 dark:text-slate-300 p-2.5 flex items-center gap-3 border border-transparent hover:border-slate-200 dark:hover:border-slate-800 cursor-pointer"
             >
               {/* Workspace Avatar */}
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 text-white font-bold text-base shadow-md select-none">
@@ -147,7 +144,7 @@ export function WorkspaceSwitcher() {
               className="flex items-center gap-3 rounded-xl px-2.5 py-2 cursor-pointer text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50/55 dark:hover:bg-indigo-950/20 focus:bg-indigo-50/55 dark:focus:bg-indigo-950/20 focus:text-indigo-600 text-sm font-semibold transition-colors"
               onClick={onOpen}
             >
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-dashed border-slate-350 dark:border-slate-700">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-dashed border-slate-300 dark:border-slate-700">
                 <Plus className="w-4.5 h-4.5 text-slate-400" />
               </div>
               <span>New workspace</span>

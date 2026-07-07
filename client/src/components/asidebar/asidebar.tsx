@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { EllipsisIcon, Loader, LogOut, Settings } from "lucide-react";
+import { Loader, LogOut, Settings } from "lucide-react";
 import {
   Sidebar,
   SidebarHeader,

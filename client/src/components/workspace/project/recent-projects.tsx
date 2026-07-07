@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useWorkspaceId from "@/hooks/use-workspace-id";
 import useGetProjectsInWorkspaceQuery from "@/hooks/api/use-get-projects";
-import { Plus, ChevronRight, Calendar as CalendarIcon, FolderOpen } from "lucide-react";
+import { ChevronRight, Calendar as CalendarIcon } from "lucide-react";
 import { getAvatarColor, getAvatarFallbackText } from "@/lib/helper";
 import { format } from "date-fns";
 import useCreateProjectDialog from "@/hooks/use-create-project-dialog";
@@ -24,7 +24,7 @@ const RecentProjects = () => {
     return (
       <div className="space-y-3">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-800/40 animate-pulse border border-slate-200/40 dark:border-slate-805/40" />
+          <div key={i} className="h-16 rounded-xl bg-slate-100 dark:bg-slate-800/40 animate-pulse border border-slate-200/40 dark:border-slate-800/40" />
         ))}
       </div>
     );

@@ -28,7 +28,7 @@ const TodayTasks = () => {
         variant: "success",
       });
     },
-    onError: (error: any) => {
+    onError: (error) => {
       toast({
         title: "Error",
         description: error.message || "Failed to update task status.",
@@ -56,7 +56,7 @@ const TodayTasks = () => {
       projectId: task.project._id,
       taskId: task._id,
       data: {
-        status: "DONE" as any, // Mark complete
+        status: "DONE", // Mark complete
       },
     });
   };
@@ -91,7 +91,7 @@ const TodayTasks = () => {
                 onClick={() => handleToggleComplete(task)}
                 className="h-5 w-5 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center cursor-pointer hover:border-indigo-500 transition-all shrink-0"
               >
-                <Check className="h-3.5 w-3.5 text-transparent group-hover:text-indigo-650 dark:group-hover:text-indigo-400 transition-colors" />
+                <Check className="h-3.5 w-3.5 text-transparent group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors" />
               </button>
 
               <div className="min-w-0 flex-1 flex flex-col">

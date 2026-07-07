@@ -3,7 +3,7 @@ import useWorkspaceId from "@/hooks/use-workspace-id";
 import { getAllTasksQueryFn } from "@/lib/api";
 import useGetProjectsInWorkspaceQuery from "@/hooks/api/use-get-projects";
 import useGetWorkspaceMembers from "@/hooks/api/use-get-workspace-members";
-import { format, formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { Activity, Loader, Folder, CheckSquare, UserPlus } from "lucide-react";
 
 type ActivityItem = {
@@ -91,11 +91,11 @@ const RecentActivity = () => {
   const getActivityIcon = (type: ActivityItem["type"]) => {
     switch (type) {
       case "project":
-        return <Folder className="w-3.5 h-3.5 text-indigo-650 dark:text-indigo-400" />;
+        return <Folder className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />;
       case "task":
         return <CheckSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />;
       case "member":
-        return <UserPlus className="w-3.5 h-3.5 text-purple-650 dark:text-purple-400" />;
+        return <UserPlus className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />;
     }
   };
 
