@@ -218,7 +218,9 @@ const Sidebar = React.forwardRef<
         ref={ref}
         className={cn(
           "group peer hidden md:flex flex-col shrink-0 h-screen transition-[width] duration-200 ease-in-out border-r border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 text-sidebar-foreground",
-          state === "collapsed" ? "w-[--sidebar-width-icon]" : "w-[--sidebar-width]"
+          "group-[.resizing]/sidebar-wrapper:transition-none",
+          state === "collapsed" ? "w-[--sidebar-width-icon]" : "w-[--sidebar-width]",
+          className
         )}
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}

@@ -20,7 +20,7 @@ const AppLayoutContent = ({
   const currentLeft = open ? sidebarWidth : 72;
 
   return (
-    <div className="relative flex min-h-svh w-full">
+    <div className={`relative flex min-h-svh w-full ${isResizing ? "select-none cursor-col-resize" : ""}`}>
       <Asidebar />
       {open && (
         <div
@@ -85,6 +85,7 @@ const AppLayout = () => {
   return (
     <AuthProvider>
       <SidebarProvider
+        className={isResizing ? "resizing" : ""}
         style={{
           "--sidebar-width": `${sidebarWidth}px`,
           "--sidebar-width-icon": "72px",
